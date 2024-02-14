@@ -35,7 +35,6 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 
-
 @Composable
 fun DetailsScreen(navController: NavController) {
     val imageUrl = "https://www.goldengeek.net/wp-content/uploads/2015/04/Critique-Avengers-2-Age-Of-Ultron.jpg"
