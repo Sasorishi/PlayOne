@@ -1,48 +1,17 @@
 package com.example.playone
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
+import com.example.playone.viewmodel.MoviesViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.playone.composable.MoviesListScreen
 
+// HomeScreen servant de conteneur pour MoviesListScreen
 @Composable
-fun HomeScreen(navController: NavController) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(26.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("PlayOne")
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = { navController.navigate("catalogue") },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text("Commencer")
-            }
-        }
-    }
-}
+fun HomeScreen(navController: NavHostController) {
+    // Instancie le MoviesViewModel ici si vous souhaitez le partager entre plusieurs composables
+    val moviesViewModel: MoviesViewModel = viewModel()
 
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    val navController = rememberNavController()
-    HomeScreen(navController = navController)
+    // Vous pouvez ajouter plus de logique ici si votre HomeScreen doit inclure plus que juste la liste des films
+    MoviesListScreen(moviesViewModel = moviesViewModel)
 }
