@@ -11,6 +11,9 @@ fun NavGraph(navController: NavHostController) {
         composable("home") {
             HomeScreen(navController = navController)
         }
+        composable("catalogue") {
+            CatalogueScreen(navController = navController)
+        }
         composable("details") {
             DetailsScreen(navController = navController)
         }
