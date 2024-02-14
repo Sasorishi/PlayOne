@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 fun NavGraph(navController: NavHostController) {
     NavHost(navController, startDestination = "home") {
         composable("home") {
-            HomeScreen(navController = navController)
+            HomeScreen()
         }
     }
 }

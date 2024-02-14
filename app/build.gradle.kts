@@ -66,8 +66,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     // ViewModel et LiveData
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.1")
     // Coroutine pour les opérations asynchrones
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation("androidx.core:core-ktx:1.12.0")
@@ -86,4 +88,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("androidx.navigation:navigation-compose:2.7.7")
+    implementation ("io.coil-kt:coil-compose:2.5.0")
 }
