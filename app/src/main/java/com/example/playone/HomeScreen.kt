@@ -33,7 +33,9 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 
+// HomeScreen servant de conteneur pour MoviesListScreen
 @Composable
+<<<<<<< HEAD
 fun HomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
@@ -97,11 +99,4 @@ fun HomeScreen(navController: NavController) {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    val navController = rememberNavController()
-    HomeScreen(navController = navController)
 }
