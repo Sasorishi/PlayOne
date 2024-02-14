@@ -31,7 +31,7 @@ fun HomeScreen(navController: NavController) {
             Text("PlayOne")
             Spacer(modifier = Modifier.height(16.dp))
             Button(
-                onClick = { navController.navigate("catalogue") },
+                onClick = { navController.navigate("details") },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Commencer")
