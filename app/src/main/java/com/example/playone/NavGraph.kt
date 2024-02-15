@@ -14,8 +14,10 @@ fun NavGraph(navController: NavHostController) {
         composable("catalogue") {
             CatalogueScreen(navController = navController)
         }
-        composable("details") {
-            DetailsScreen(navController = navController)
+        composable("details/{movieId}") { navBackStackEntry ->
+            // Récupération de l'ID du film à partir des arguments
+            val movieId = navBackStackEntry.arguments?.getString("movieId")
+            DetailsScreen(movieId = movieId, navController = navController)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.playone
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -41,31 +42,36 @@ fun CatalogueScreen(navController: NavController) {
 
     LazyColumn(contentPadding = PaddingValues(16.dp)) {
         items(movies) { movie ->
-            MovieItem(movie = movie) // Assurez-vous que movie est bien un objet Movie
+            MovieItem(movie = movie, navController = navController)
         }
     }
 }
 
 @Composable
-fun MovieItem(movie: Movie) {
+fun MovieItem(movie: Movie, navController: NavController) {
     val imageUrl = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
 
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .padding(8.dp)) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable {
+                navController.navigate("details/${movie.id}") // Assurez-vous que le chemin correspond à votre graphique de navigation
+            }
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Image(
-                rememberAsyncImagePainter(
+                painter = rememberAsyncImagePainter(
                     ImageRequest.Builder(LocalContext.current)
                         .data(data = imageUrl)
                         .allowHardware(false)
                         .build()
                 ),
                 contentDescription = "Image du film",
-                Modifier
+                modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(16f / 9f) // Ratio d'aspect 16:9 pour garder les proportions de l'image
-                    .background(Color.Black) // Fond noir pour éviter les bords blancs si l'image est rognée
+                    .aspectRatio(16f / 9f)
+                    .background(Color.Black)
             )
             Text(text = movie.title, style = MaterialTheme.typography.headlineMedium)
             Spacer(modifier = Modifier.height(8.dp))

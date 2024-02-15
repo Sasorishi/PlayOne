@@ -13,8 +13,8 @@ interface TMDbApiService {
     suspend fun getPopularMovies(@Query("api_key") apiKey: String): Response<MovieResponse>
 
     // Exemple d'appel pour obtenir les détails d'un film spécifique
-    @GET("movie/{movieId}")
-    suspend fun getMovieDetails(@Path("movieId") movieId: Int, @Query("api_key") apiKey: String): Response<Movie>
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(@Path("movie_id") movieId: Int, @Query("api_key") apiKey: String): Response<Movie>
 
     companion object {
         const val BASE_URL = "https://api.themoviedb.org/3/"
