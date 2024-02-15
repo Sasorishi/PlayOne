@@ -71,7 +71,7 @@ fun DetailsScreen(movieId: String?, navController: NavController, viewModel: Mov
                         contentDescription = "Image du film ${movie.title}",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .aspectRatio(16f / 9f)
+                            .aspectRatio(16f / 16f)
                             .clip(
                                 RoundedCornerShape(
                                     topStart = 0.dp,
