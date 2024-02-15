@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,7 +24,9 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -58,28 +61,52 @@ fun DetailsScreen(movieId: String?, navController: NavController, viewModel: Mov
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 // Utilisez l'URL de l'image pour charger et afficher l'affiche du film
-                Image(
-                    painter = rememberAsyncImagePainter(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(data = imageUrl)
-                            .build()
-                    ),
-                    contentDescription = "Image du film ${movie.title}",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(16f / 9f)
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(Color.Black)
-                )
-                Text(
-                    text = "${movie.title}"
-                )
+                Box {
+                    Image(
+                        painter = rememberAsyncImagePainter(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(data = imageUrl)
+                                .build()
+                        ),
+                        contentDescription = "Image du film ${movie.title}",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(16f / 9f)
+                            .clip(
+                                RoundedCornerShape(
+                                    topStart = 0.dp,
+                                    topEnd = 0.dp,
+                                    bottomStart = 16.dp,
+                                    bottomEnd = 16.dp
+                                )
+                            )
+                            .background(Color.Black),
+                        contentScale = ContentScale.Crop
+                    )
+                    Button(
+                        onClick = { navController.popBackStack() },
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0x80787878)
+                        )
+                    ) {
+                        Text("<", fontSize = 18.sp)
+                    }
+                }
+
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Date de sortie: ${movie.release_date}", // Assurez-vous que votre modèle Movie inclut un champ pour la date de sortie
-                    fontStyle = FontStyle.Italic
-                )
-                Spacer(modifier = Modifier.height(32.dp))
+                Text("${movie.title} - ${movie.release_date}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.4f)
+                        .shadow(2.dp)
+                ) {
+                    Divider(color = Color((0xFF780000)), thickness = 1.dp)
+                }
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "Score : ${movie.popularity} ", // Utilisez les champs appropriés de votre modèle Movie
                 )
@@ -88,32 +115,52 @@ fun DetailsScreen(movieId: String?, navController: NavController, viewModel: Mov
                     text = genresText,
                     modifier = Modifier.padding(top = 8.dp)
                 )
-                LazyColumn(
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .clip(
+                            RoundedCornerShape(
+                                topStart = 16.dp,
+                                topEnd = 16.dp,
+                                bottomStart = 0.dp,
+                                bottomEnd = 0.dp
+                            )
+                        )
+                        .background(Color(0xFF022739)),
+                    contentAlignment = Alignment.Center
                 ) {
-                    item {
-                        Text(
-                            "Résumé :",
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            movie.overview,
-                            color = Color.Black,
-                            style = TextStyle(lineHeight = 24.sp)
-                        )
-                    }
-                    item {
-                        Spacer(modifier = Modifier.height(32.dp))
-                        Button(
-                            onClick = { /* Implémentez une action lorsque le bouton est cliqué */ },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF780000))
-                        ) {
-                            Text("Regarder le film")
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp)
+                    ) {
+                        item {
+                            Text(
+                                "Résumé :",
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                movie.overview,
+                                color = Color.White,
+                                style = TextStyle(lineHeight = 24.sp)
+                            )
+                        }
+                        item {
+                            Spacer(modifier = Modifier.height(32.dp))
+                            Button(
+                                onClick = { /* Implémentez une action lorsque le bouton est cliqué */ },
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(
+                                        0xFF780000
+                                    )
+                                )
+                            ) {
+                                Text("Regarder le film")
+                            }
                         }
                     }
                 }
