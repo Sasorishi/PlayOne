@@ -1,4 +1,4 @@
-package com.example.playone
+package com.example.playone.screens
 
 import android.media.MediaPlayer
 import android.view.SurfaceHolder
@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
+import com.example.playone.R
 
 @Composable
 fun HomeScreen(navController: NavController) {

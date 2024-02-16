@@ -1,5 +1,7 @@
 # PlayOne
 
+![Logo PlayOne](https://langinc.com.tw/wp-content/uploads/2023/03/playone_LOGO_3x.png)
+
 PlayOne is a streaming platform that catalogs movies, series, and provides information about cinematography.
 
 ## Features
@@ -14,7 +16,9 @@ To run this project locally, follow these steps:
 
 1. Clone this repository.
 2. Open the project in your preferred IDE.
-3. Build and run the project.
+3. Get a TMBD Api Key
+4. Put your Api Key in local.properties files : tmdb_api_key=\***\*\*\*\*\*\*\***
+5. Build and run the project.
 
 ## Technologies Used
 
@@ -27,18 +31,9 @@ To run this project locally, follow these steps:
 
 To get started with using PlayOne, follow these steps:
 
-1. Sign up for an account on PlayOne.
-2. Browse through the catalog to find movies or series you're interested in.
-3. Start streaming your favorite content!
-
-## Contributing
-
-We welcome contributions from the community. If you'd like to contribute to PlayOne, please follow these guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes.
-4. Submit a pull request.
+1. Go through the homescreen PlayOne.
+2. Browse through the catalog to find movies you're interested in.
+3. Start streaming your favorite content or read the details movie!
 
 ## License
 

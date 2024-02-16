@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.playone.screens.CatalogueScreen
+import com.example.playone.screens.DetailsScreen
+import com.example.playone.screens.HomeScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
